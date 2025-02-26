@@ -17,7 +17,7 @@
 .segment {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+
   height: 100vh;
 
   div {
@@ -39,6 +39,10 @@
   }
   .seg-r {
     width: 60%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 </style>
