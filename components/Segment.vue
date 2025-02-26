@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="segment">
+  <div class="segment seg-1">
     <div class="seg-l">
       <h2>1<span>/</span>  Мирна Україна</h2>
       <h4 class="subheader">lorem lorem lorem</h4>

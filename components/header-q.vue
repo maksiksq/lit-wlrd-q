@@ -6,9 +6,9 @@
   <header>
     <nav>
       <div class="logo">temp</div>
-      <a>1</a>
-      <a>2</a>
-      <a>3</a>
+      <a href="#seg-1">1</a>
+      <a href="#seg-2">2</a>
+      <a href="#seg-3">3</a>
     </nav>
   </header>
 </template>
@@ -31,10 +31,12 @@ header {
     * {
       margin-left: 2.083vw;
       font-size: 2rem;
+
+      font-family: "e-Ukraine head", sans-serif;
     }
 
     .logo {
-      margin-left: 1.083vw;
+      margin-left: 2.83vw;
     }
   }
 }
