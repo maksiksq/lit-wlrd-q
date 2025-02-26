@@ -42,10 +42,7 @@ body, html {
   color: white;
 }
 
-h2 {
-  font-family: 'e-Ukraine head';
-  font-size: 3.75rem;
-}
+
 </style>
 <style lang="scss" scoped></style>
 <script setup lang="ts">

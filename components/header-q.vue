@@ -28,6 +28,11 @@ header {
     flex-direction: row;
     align-items: center;
 
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
     * {
       margin-left: 2.083vw;
       font-size: 2rem;
