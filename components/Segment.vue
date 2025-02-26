@@ -1,22 +1,36 @@
 <script setup lang="ts">
 const props = defineProps(['id', 'cls', 'head', 'subhead', 'cnt', 'img'])
 
-const ifEven = props.id/2%0;
+const evenClass = ref('even')
+const ifEven = parseInt(props.id)%2;
+
+onMounted(() => {
+  console.log(evenClass.value);
+})
 
 </script>
 
 <template>
-  <div :style="{ flexDirection: ifEven ? 'row-reverse' : 'row' }"  class="segment seg-1">
-    <div class="seg-l">
+  <div :class="!ifEven ? evenClass : ''"  class="segment seg-1">
+    <div class="seg-l half">
       <h2>{{ id }}<span>/</span> {{ head }}</h2>
       <h4 class="subheader">{{ subhead }}</h4>
       <p class="content">{{ cnt }}</p>
     </div>
-    <div class="seg-r">aa</div>
+    <div class="seg-r half">aa</div>
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+.even {
+  flex-direction: row-reverse !important; // yes yes very proper i know
+  .seg-l {
+    padding-left: 0;
+    padding-right: 7.292vw;
+
+  }
+}
+
 .segment {
   display: flex;
   flex-direction: row;
@@ -32,7 +46,11 @@ const ifEven = props.id/2%0;
 
   h4 {
     padding-bottom: 1vw;
+    font-size: 1.3rem;
+  }
 
+  p {
+    font-size: 1.3rem;
   }
 
   div {
