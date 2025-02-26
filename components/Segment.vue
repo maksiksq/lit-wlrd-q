@@ -1,13 +1,16 @@
 <script setup lang="ts">
+const props = defineProps(['id', 'cls', 'head', 'subhead', 'cnt', 'img'])
+
+const ifEven = props.id/2%0;
 
 </script>
 
 <template>
-  <div class="segment seg-1">
+  <div :style="{ flexDirection: ifEven ? 'row-reverse' : 'row' }"  class="segment seg-1">
     <div class="seg-l">
-      <h2>1<span>/</span>  Мирна Україна</h2>
-      <h4 class="subheader">В якій нам жити.</h4>
-      <p class="content">Уяви: тихий вечір у Києві, люди гуляють набережною, десь лунає жива музика. Ніяких тривог, ніяких втрат, тільки спокійне життя, яке давно мало бути нормою. Заводи працюють на економіку, а не на оборону, а замість зборів на дрони збирають на стартапи, дослідження і аніме фестивалі.</p>
+      <h2>{{ id }}<span>/</span> {{ head }}</h2>
+      <h4 class="subheader">{{ subhead }}</h4>
+      <p class="content">{{ cnt }}</p>
     </div>
     <div class="seg-r">aa</div>
   </div>
