@@ -6,6 +6,9 @@ import cow from './svg/cow.vue'
 import dronee from './svg/dronee.vue'
 
 const evenClass = ref('even')
+const seg1Class = ref('seg-1')
+const seg2Class = ref('seg-2')
+const seg3Class = ref('seg-3')
 const ifEven = parseInt(props.id)%2;
 
 onMounted(() => {
@@ -15,7 +18,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div :class="!ifEven ? evenClass : ''"  class="segment seg-1">
+  <div :class="[!ifEven ? evenClass : '', 'seg-'+props.id]"  class="segment">
     <div class="seg-l half">
       <h2>{{ id }}<span>/</span> {{ head }}</h2>
       <h4 class="subheader">{{ subhead }}</h4>
@@ -93,7 +96,7 @@ onMounted(() => {
       width: 170%;
     }
     .svg-dronee {
-      width: 60%;
+      width: 30%;
 
     }
 
