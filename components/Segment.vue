@@ -1,11 +1,15 @@
 <script setup lang="ts">
-const props = defineProps(['id', 'cls', 'head', 'subhead', 'cnt', 'img'])
+const props = defineProps(['id', 'cls', 'head', 'subhead', 'cnt', 'svg'])
+
+import Ukraine from './svg/Ukraine.vue'
+import fire from './svg/fire.vue'
+import dronee from './svg/dronee.vue'
 
 const evenClass = ref('even')
 const ifEven = parseInt(props.id)%2;
 
 onMounted(() => {
-  console.log(evenClass.value);
+  console.log(props.svg)
 })
 
 </script>
@@ -17,7 +21,11 @@ onMounted(() => {
       <h4 class="subheader">{{ subhead }}</h4>
       <p class="content">{{ cnt }}</p>
     </div>
-    <div class="seg-r half">aa</div>
+    <div class="seg-r half">
+      <Ukraine v-if="props.svg === '0'" />
+      <fire v-else-if="props.svg === '1'" />
+      <dronee v-else-if="props.svg === '2'" />
+    </div>
   </div>
 </template>
 
@@ -28,6 +36,10 @@ onMounted(() => {
     padding-left: 0;
     padding-right: 7.292vw;
 
+    svg {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 
