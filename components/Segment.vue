@@ -2,7 +2,7 @@
 const props = defineProps(['id', 'cls', 'head', 'subhead', 'cnt', 'svg'])
 
 import Ukraine from './svg/Ukraine.vue'
-import fire from './svg/fire.vue'
+import cow from './svg/cow.vue'
 import dronee from './svg/dronee.vue'
 
 const evenClass = ref('even')
@@ -23,7 +23,7 @@ onMounted(() => {
     </div>
     <div class="seg-r half">
       <Ukraine v-if="props.svg === '0'" />
-      <fire v-else-if="props.svg === '1'" />
+      <cow v-else-if="props.svg === '1'" />
       <dronee v-else-if="props.svg === '2'" />
     </div>
   </div>
@@ -35,11 +35,6 @@ onMounted(() => {
   .seg-l {
     padding-left: 0;
     padding-right: 7.292vw;
-
-    svg {
-      width: 100%;
-      height: 100%;
-    }
   }
 }
 
@@ -47,7 +42,7 @@ onMounted(() => {
   display: flex;
   flex-direction: row;
 
-  height: 100vh;
+  height: 90vh;
 
   h2 {
     font-family: 'e-Ukraine head',sans-serif;
@@ -88,6 +83,21 @@ onMounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    svg {
+      width: 80%;
+      height: 100%;
+    }
+
+    .svg-cow {
+      width: 170%;
+    }
+    .svg-dronee {
+      width: 60%;
+
+    }
+
   }
+
 }
 </style>

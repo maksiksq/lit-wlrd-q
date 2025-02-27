@@ -1,6 +1,6 @@
 <script/>
 <template>
-  <svg width="367" height="334" viewBox="0 0 367 334" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg class="svg-fire" width="367" height="334" viewBox="0 0 367 334" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="153.5" cy="265.5" r="68.5" fill="#DB4252"/>
     <path d="M24.4534 187.252L77.6445 199.774L35.29 240.812L24.4534 187.252Z" fill="#FFBB1D"/>
     <path d="M24.4534 187.252L77.6445 199.774L35.29 240.812L24.4534 187.252Z" fill="#FFBB1D"/>

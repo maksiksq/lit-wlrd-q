@@ -1,7 +1,7 @@
 <script>
 </script>
 <template>
-<svg width="422" height="386" viewBox="0 0 422 386" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg class="svg-dronee" width="422" height="386" viewBox="0 0 422 386" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="210.5" cy="205.5" r="74.5" fill="black"/>
 <path d="M93.5 75.5C104.3 87.5 147.5 126.5 177.5 139L146 172C140.5 149.5 100.333 112.167 78 89C82.4 90.6 90.5 81 93.5 75.5Z" fill="black" stroke="black" stroke-width="2"/>
 <circle cx="71.5" cy="67.5" r="23.5" fill="#A1A1A1"/>
