@@ -86,8 +86,8 @@ onMounted(() => {
     </div>
     <div class="seg-r half">
       <Ukraine :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-Ukraine-{{ props.id }}" :style="{transform: ifDone ? 'translateY(20vw)' : 'translateY(0vw)'}" v-if="props.svg === '0'"/>
-      <cow :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-cow-{{ props.id }}" style="opacity: 0; transform: translateY(20vw);" v-if="props.svg === '1'"/>
-      <dronee :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-dronee-{{ props.id }}" style="opacity: 0; transform: translateY(20vw);" v-if="props.svg === '2'"/>
+      <cow :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-cow-{{ props.id }}" :style="{transform: ifDone ? 'translateY(40vw)' : 'translateY(0vw)'}" v-if="props.svg === '1'"/>
+      <dronee :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-dronee-{{ props.id }}" :style="{transform: ifDone ? 'translateY(40vw)' : 'translateY(0vw)'}" v-if="props.svg === '2'"/>
 
 
     </div>
