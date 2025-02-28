@@ -14,14 +14,14 @@ const socials = [
     _name: 'GitHub',
     tooltip: '',
     icon: faGithub,
-    scaling: null,
+    scaling: undefined,
     link: 'https://github.com/maksiksq'
   },
   {
     _name: 'Bluesky',
     tooltip: '',
     icon: faBluesky,
-    scaling: null,
+    scaling: undefined,
     link: 'https://bsky.app/profile/did:plc:hyordudettlbjkmif7jg2cdu'
   },
   {
@@ -29,36 +29,16 @@ const socials = [
     tooltip: '@maksiks (Натисни щоб скопіювати)',
     icon: faDiscord,
     scaling: 0.8,
-    link: null
+    link: undefined
   },
   {
     _name: 'E-mail',
     tooltip: 'maksiks.touch@gmail.com (Натисни щоб скопіювати)',
     icon: faEnvelope,
-    scaling: null,
-    link: null
+    scaling: undefined,
+    link: undefined
   }
 ]
-
-const tooltip = ref(null)
-
-const tooltipStyles = reactive({
-      display: 'none',
-      transform: 'translate(0px, 0px)'
-    }
-)
-
-function handleHover(social, e) {
-  if (social.link === null) {
-    tooltipStyles.display = 'initial';
-    tooltipStyles.transform = `translate(${e.clientX+10}px, ${e.clientY+10}px)`;
-  }
-  console.log("yoi");
-}
-
-function handleMouseLeave() {
-  tooltipStyles.display = 'none';
-}
 
 </script>
 
@@ -72,13 +52,9 @@ function handleMouseLeave() {
         <p>Maksiks☕</p>
       </div>
       <address>
-        <a v-for="social in socials" :href="social.link" @mouseover="handleHover(social, $event)" @mouseleave="handleMouseLeave()">
+        <a v-tooltip="'yes' + 'yes'" v-for="social in socials" :href="social.link">
           <font-awesome-icon :icon="social.icon" :style="{scale: social.scaling}"></font-awesome-icon>
         </a>
-        <div ref="tooltip" class="tooltip" :style="tooltipStyles">
-          aaa
-<!--          {{ social.tooltip }}-->
-        </div>
       </address>
     </div>
   </footer>
