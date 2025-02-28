@@ -24,6 +24,7 @@ async function onEnter(el: any, onComplete: any) {
 
 const animatedElems = new Set();
 const i = ref(0.1);
+const isDone = ref(false);
 
 function animateOnObserve(entries: IntersectionObserverEntry[]) {
   i.value += 0.1;
@@ -35,19 +36,18 @@ function animateOnObserve(entries: IntersectionObserverEntry[]) {
     }
 
     if (entry.isIntersecting) {
-      console.log("Animating:", el);
       animatedElems.add(el.dataset.animId);
 
       const duration = 0.8 + i.value;
 
-      console.log(el.dataset.animId)
       if (el.dataset.animId && el.dataset.animId[0] + el.dataset.animId[1] === 'sv' ) {
-        animate(el, { y: ["10vw", "0%"], opacity: [0, 1] }, { duration: 1.2, easing: "spring", stiffness: 10, damping: 500 });
+        animate(el, { y: ["10vw", "0%"], opacity: [0, 1] }, { duration: 1.2, easing: "spring", stiffness: 10, damping: 500 }).finished.then(() => {
+          isDone.value = true;
+        });
       } else if (el.dataset.animId && el.dataset.animId[0] + el.dataset.animId[1] === 'ev') {
         animate(el, { x: ["100vw", "0%"], opacity: [0, 1] }, { duration: duration, easing: "spring", stiffness: 300, damping: 10, mass: 100  });
       } else {
         animate(el, { x: ["-100vw", "0%"], opacity: [0, 1] }, { duration: duration, easing: "spring", stiffness: 300, damping: 10, mass: 100  });
-
       }
     }
   });
@@ -85,9 +85,9 @@ onMounted(() => {
       </div>
     </div>
     <div class="seg-r half">
-      <Ukraine v-intersection-observer="animateOnObserve" data-anim-id="sv-Ukraine-{{ props.id }}" style="opacity: 0; transform: translateY(20vw);" v-if="props.svg === '0'"/>
-      <cow v-intersection-observer="animateOnObserve" data-anim-id="sv-cow-{{ props.id }}" style="opacity: 0; transform: translateY(20vw);" v-if="props.svg === '1'"/>
-      <dronee v-intersection-observer="animateOnObserve" data-anim-id="sv-dronee-{{ props.id }}" style="opacity: 0; transform: translateY(20vw);" v-if="props.svg === '2'"/>
+      <Ukraine :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-Ukraine-{{ props.id }}" :style="{transform: ifDone ? 'translateY(20vw)' : 'translateY(0vw)'}" v-if="props.svg === '0'"/>
+      <cow :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-cow-{{ props.id }}" style="opacity: 0; transform: translateY(20vw);" v-if="props.svg === '1'"/>
+      <dronee :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-dronee-{{ props.id }}" style="opacity: 0; transform: translateY(20vw);" v-if="props.svg === '2'"/>
 
 
     </div>
