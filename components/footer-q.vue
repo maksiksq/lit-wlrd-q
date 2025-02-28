@@ -13,6 +13,7 @@ const socials = [
   {
     _name: 'GitHub',
     tooltip: 'maksiksq (Натисни щоб перейти)',
+    value: undefined,
     icon: faGithub,
     scaling: undefined,
     link: 'https://github.com/maksiksq'
@@ -20,6 +21,7 @@ const socials = [
   {
     _name: 'Bluesky',
     tooltip: 'maksiks.bsky.social (Натисни щоб перейти)',
+    value: undefined,
     icon: faBluesky,
     scaling: undefined,
     link: 'https://bsky.app/profile/did:plc:hyordudettlbjkmif7jg2cdu'
@@ -27,6 +29,7 @@ const socials = [
   {
     _name: 'Discord',
     tooltip: '@maksiks (Натисни щоб скопіювати)',
+    value: "@maksiks",
     icon: faDiscord,
     scaling: 0.8,
     link: undefined
@@ -34,11 +37,19 @@ const socials = [
   {
     _name: 'E-mail',
     tooltip: 'maksiks.touch@gmail.com (Натисни щоб скопіювати)',
+    value: "maksiks.touch@gmail.com",
     icon: faEnvelope,
     scaling: undefined,
     link: undefined
   }
 ]
+
+function handleClick(social: any) {
+  if (social.link !== undefined) {
+    return faEnvelope
+  }
+  navigator.clipboard.writeText(social.value)
+}
 
 </script>
 
@@ -54,7 +65,7 @@ const socials = [
       <address>
         <!-- would make it a NuxtLink but doesn't matter enough here,
         and I'd have to make the logic more complex -->
-        <a v-for="social in socials" target="_blank" :href="social.link" v-tooltip="social.tooltip">
+        <a v-for="social in socials" target="_blank" :href="social.link" v-tooltip="social.tooltip" @click="handleClick(social)">
           <font-awesome-icon :icon="social.icon" :style="{scale: social.scaling}"></font-awesome-icon>
         </a>
       </address>
