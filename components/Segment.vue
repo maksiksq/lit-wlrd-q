@@ -23,34 +23,21 @@ async function onEnter(el: any, onComplete: any) {
 }
 
 const animatedElems = new Set();
-const i = ref(0);
-const keepGoin = ref(false);
 
 
-function animateOnObserve(entries: any, intersecting: any) {
-  if (i.value === 1 && !keepGoin.value) {
-    console.log('hell')
-    keepGoin.value = true;
-    animatedElems.clear();
-  } else {
-    i.value += 1;
-    return;
-  }
-  entries.forEach((entry: any) => {
+function animateOnObserve(entries: IntersectionObserverEntry[]) {
+  entries.forEach((entry) => {
     const el = entry.target as HTMLElement;
 
-    if (!el || animatedElems.has(el)) {
-      console.log("pass");
+    if (!el || animatedElems.has(el.dataset.animId)) {
       return;
     }
 
-    if (intersecting) {
-      console.log("observin");
-      console.log(i.value);
-      animatedElems.add(el);
+    if (entry.isIntersecting) {
+      console.log("Animating:", el);
+      animatedElems.add(el.dataset.animId); // Track animation using dataset ID
 
       animate(el, { y: ["10vw", "0%"], opacity: [0, 1] }, { duration: 0.8, easing: "ease-out" });
-
     }
   });
 }
@@ -64,22 +51,22 @@ onMounted(() => {
 <template>
   <div :id="'seg-'+props.id" :class="[!ifEven ? evenClass : '']" class="segment">
     <div class="seg-l half">
-      <h2 class="main-head">{{ id }}<span>/</span> {{ head }}</h2>
-      <h4 class="subheader">{{ subhead }}</h4>
-      <div ref="animP" class="anim-cont" v-intersection-observer="animateOnObserve" style="opacity: 0; transform: translateY(100vw);">
-        <p  class="content">{{ cnt }}</p>
+      <h2 v-intersection-observer="animateOnObserve" data-anim-id="head-{{ props.id }}" style="opacity: 0; transform: translateY(10vw);" class="main-head">
+        {{ id }}<span>/</span> {{ head }}
+      </h2>
+
+      <h4 v-intersection-observer="animateOnObserve" data-anim-id="subhead-{{ props.id }}" style="opacity: 0; transform: translateY(10vw);" class="subheader">
+        {{ subhead }}
+      </h4>
+
+      <div ref="animP" class="anim-cont" v-intersection-observer="animateOnObserve" data-anim-id="content-{{ props.id }}" style="opacity: 0; transform: translateY(10vw);">
+        <p class="content">{{ cnt }}</p>
       </div>
     </div>
     <div class="seg-r half">
-      <Transition appear :css="false" @enter="onEnter" @appear="onEnter">
-        <Ukraine v-if="props.svg === '0'"/>
-      </Transition>
-      <Transition appear :css="false" @enter="onEnter" @appear="onEnter">
-        <cow v-if="props.svg === '1'"/>
-      </Transition>
-      <Transition appear :css="false" @enter="onEnter" @appear="onEnter">
-        <dronee v-if="props.svg === '2'"/>
-      </Transition>
+      <Ukraine v-intersection-observer="animateOnObserve" data-anim-id="sv-Ukraine-{{ props.id }}" style="opacity: 0; transform: translateY(20vw);" v-if="props.svg === '0'"/>
+      <cow v-intersection-observer="animateOnObserve" data-anim-id="sv-cow-{{ props.id }}" style="opacity: 0; transform: translateY(20vw);" v-if="props.svg === '1'"/>
+      <dronee v-intersection-observer="animateOnObserve" data-anim-id="sv-dronee-{{ props.id }}" style="opacity: 0; transform: translateY(20vw);" v-if="props.svg === '2'"/>
 
 
     </div>
@@ -112,6 +99,8 @@ onMounted(() => {
 
 .segment {
   padding-top: 4.125vw;
+
+  overflow-y: hidden;
 
   display: flex;
   flex-direction: row;
