@@ -14,6 +14,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",
+    "@vueuse/components": "^12.7.0",
     "@vueuse/core": "^12.7.0",
     "@vueuse/nuxt": "^12.7.0",
     "floating-vue": "^5.2.2",
