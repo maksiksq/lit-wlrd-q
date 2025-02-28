@@ -21,23 +21,39 @@ const socials = [
     tooltip: '',
     icon: faBluesky,
     scaling: null,
-    link: ''
+    link: 'https://bsky.app/profile/did:plc:hyordudettlbjkmif7jg2cdu'
   },
   {
     _name: 'Discord',
     tooltip: '@maksiks (Натисни щоб скопіювати)',
     icon: faDiscord,
     scaling: 0.8,
-    link: ''
+    link: null
   },
   {
     _name: 'E-mail',
     tooltip: 'maksiks.touch@gmail.com (Натисни щоб скопіювати)',
     icon: faEnvelope,
     scaling: null,
-    link: ''
+    link: null
   }
 ]
+
+const tooltip = ref(null)
+
+const tooltipStyles = reactive({
+      display: 'none',
+      transform: 'translate(0px, 0px)'
+    }
+)
+
+function handleHover(social, e) {
+  if (social.link === null) {
+    tooltipStyles.display = 'initial';
+    tooltipStyles.transform = `translate(${e.x}px, ${e.y}px)`;
+  }
+  console.log("yoi");
+}
 
 </script>
 
@@ -51,9 +67,12 @@ const socials = [
         <p>Maksiks☕</p>
       </div>
       <address>
-        <a v-for="social in socials" href="{{ social.link }}">
+        <a v-for="social in socials" :href="social.link" @mouseover="handleHover(social, $event)">
           <font-awesome-icon :icon="social.icon" :style="{scale: social.scaling}"></font-awesome-icon>
         </a>
+        <div ref="tooltip" class="tooltip" :style="tooltipStyles">
+          {{ socials.tooltip }}
+        </div>
       </address>
     </div>
   </footer>
@@ -136,5 +155,15 @@ footer {
       }
     }
   }
+}
+
+.tooltip {
+  position: fixed;
+  background: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  pointer-events: none;
 }
 </style>
