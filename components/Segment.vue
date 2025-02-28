@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {animate} from "motion"
+import {vIntersectionObserver} from '@vueuse/components'
 
 import Ukraine from './svg/Ukraine.vue'
 import cow from './svg/cow.vue'
@@ -17,32 +18,57 @@ onMounted(() => {
 })
 
 async function onEnter(el: any, onComplete: any) {
-  console.log(el)
-  console.log("hai")
-  await animate(el,
-      { y: ['10vw', '0%'], opacity: [0, 1]},  { duration: 0.8, easing: "ease-out" })
-
+  console.log('boink')
   onComplete()
 }
 
-function animateOnEnter() {
-  console.log("test");
+const animatedElems = new Set();
+const i = ref(0);
+const keepGoin = ref(false);
+
+
+function animateOnObserve(entries: any, intersecting: any) {
+  if (i.value === 1 && !keepGoin.value) {
+    console.log('hell')
+    keepGoin.value = true;
+    animatedElems.clear();
+  } else {
+    i.value += 1;
+    return;
+  }
+  entries.forEach((entry: any) => {
+    const el = entry.target as HTMLElement;
+
+    if (!el || animatedElems.has(el)) {
+      console.log("pass");
+      return;
+    }
+
+    if (intersecting) {
+      console.log("observin");
+      console.log(i.value);
+      animatedElems.add(el);
+
+      animate(el, { y: ["10vw", "0%"], opacity: [0, 1] }, { duration: 0.8, easing: "ease-out" });
+
+    }
+  });
 }
+
+onMounted(() => {
+  animatedElems.clear();
+})
 
 </script>
 
 <template>
   <div :id="'seg-'+props.id" :class="[!ifEven ? evenClass : '']" class="segment">
     <div class="seg-l half">
-      <Transition appear :css="false" @enter="onEnter" @appear="onEnter">
-        <h2>{{ id }}<span>/</span> {{ head }}</h2>
-      </Transition>
-      <Transition appear :css="false" @enter="onEnter" @appear="onEnter">
-        <h4 class="subheader">{{ subhead }}</h4>
-      </Transition>
-      <Transition appear :css="false" @enter="onEnter" @appear="onEnter">
-        <p v-intersect="animateOnEnter" class="content">{{ cnt }}</p>
-      </Transition>
+      <h2 class="main-head">{{ id }}<span>/</span> {{ head }}</h2>
+      <h4 class="subheader">{{ subhead }}</h4>
+      <div ref="animP" class="anim-cont" v-intersection-observer="animateOnObserve" style="opacity: 0; transform: translateY(100vw);">
+        <p  class="content">{{ cnt }}</p>
+      </div>
     </div>
     <div class="seg-r half">
       <Transition appear :css="false" @enter="onEnter" @appear="onEnter">
@@ -54,7 +80,6 @@ function animateOnEnter() {
       <Transition appear :css="false" @enter="onEnter" @appear="onEnter">
         <dronee v-if="props.svg === '2'"/>
       </Transition>
-
 
 
     </div>
@@ -70,6 +95,7 @@ function animateOnEnter() {
 
 .fade-default {
   background-color: purple;
+
   * {
     opacity: 0;
     background-color: yellow;

@@ -6,5 +6,6 @@ export default defineNuxtConfig({
   modules: [
       'floating-vue/nuxt',
       '@vueuse/nuxt',
+      '@pinia/nuxt',
   ]
 })
