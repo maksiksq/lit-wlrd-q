@@ -23,9 +23,10 @@ async function onEnter(el: any, onComplete: any) {
 }
 
 const animatedElems = new Set();
-
+const i = ref(0.1);
 
 function animateOnObserve(entries: IntersectionObserverEntry[]) {
+  i.value += 0.1;
   entries.forEach((entry) => {
     const el = entry.target as HTMLElement;
 
@@ -35,15 +36,35 @@ function animateOnObserve(entries: IntersectionObserverEntry[]) {
 
     if (entry.isIntersecting) {
       console.log("Animating:", el);
-      animatedElems.add(el.dataset.animId); // Track animation using dataset ID
+      animatedElems.add(el.dataset.animId);
 
-      animate(el, { y: ["10vw", "0%"], opacity: [0, 1] }, { duration: 0.8, easing: "ease-out" });
+      const duration = 0.8 + i.value;
+
+      console.log(el.dataset.animId)
+      if (el.dataset.animId && el.dataset.animId[0] + el.dataset.animId[1] === 'sv' ) {
+        animate(el, { y: ["10vw", "0%"], opacity: [0, 1] }, { duration: 1.2, easing: "spring", stiffness: 10, damping: 500 });
+      } else if (el.dataset.animId && el.dataset.animId[0] + el.dataset.animId[1] === 'ev') {
+        animate(el, { x: ["100vw", "0%"], opacity: [0, 1] }, { duration: duration, easing: "spring", stiffness: 300, damping: 10, mass: 100  });
+      } else {
+        animate(el, { x: ["-100vw", "0%"], opacity: [0, 1] }, { duration: duration, easing: "spring", stiffness: 300, damping: 10, mass: 100  });
+
+      }
     }
   });
 }
 
+const evId = ref("head-{{ props.id }}")
+const subheadId = ref("subhead-{{ props.id }}")
+const contentId = ref("content-{{ props.id }}")
+
 onMounted(() => {
   animatedElems.clear();
+
+  if (!ifEven) {
+    evId.value = "ev-head-{{ props.id }}";
+    subheadId.value = "ev-subhead-{{ props.id }}";
+    contentId.value = "ev-content-{{ props.id }}";
+  }
 })
 
 </script>
@@ -51,15 +72,15 @@ onMounted(() => {
 <template>
   <div :id="'seg-'+props.id" :class="[!ifEven ? evenClass : '']" class="segment">
     <div class="seg-l half">
-      <h2 v-intersection-observer="animateOnObserve" data-anim-id="head-{{ props.id }}" style="opacity: 0; transform: translateY(10vw);" class="main-head">
+      <h2 v-intersection-observer="animateOnObserve" :data-anim-id=evId style="opacity: 0; transform: translateY(10vw);" class="main-head">
         {{ id }}<span>/</span> {{ head }}
       </h2>
 
-      <h4 v-intersection-observer="animateOnObserve" data-anim-id="subhead-{{ props.id }}" style="opacity: 0; transform: translateY(10vw);" class="subheader">
+      <h4 v-intersection-observer="animateOnObserve" :data-anim-id=subheadId style="opacity: 0; transform: translateY(10vw);" class="subheader">
         {{ subhead }}
       </h4>
 
-      <div ref="animP" class="anim-cont" v-intersection-observer="animateOnObserve" data-anim-id="content-{{ props.id }}" style="opacity: 0; transform: translateY(10vw);">
+      <div class="anim-cont" v-intersection-observer="animateOnObserve" :data-anim-id=contentId style="opacity: 0; transform: translateY(10vw);">
         <p class="content">{{ cnt }}</p>
       </div>
     </div>
@@ -101,6 +122,7 @@ onMounted(() => {
   padding-top: 4.125vw;
 
   overflow-y: hidden;
+  overflow-x: hidden;
 
   display: flex;
   flex-direction: row;
