@@ -81,6 +81,7 @@ footer {
     justify-content: center;
     border-right: 1px solid black;
 
+    //
     p {
       color: #D4D4D4;
       font-size: 1.2rem;
