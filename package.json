@@ -13,6 +13,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",
+    "floating-vue": "^5.2.2",
     "nuxt": "^3.15.4",
     "sass": "^1.85.1",
     "vue": "latest",

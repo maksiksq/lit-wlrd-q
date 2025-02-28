@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import FloatingVue from 'floating-vue'
+
 // font awesome icons because yes
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'

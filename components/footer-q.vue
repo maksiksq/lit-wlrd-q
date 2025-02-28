@@ -1,8 +1,9 @@
 <script setup lang="ts">
 
+
+
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {library} from '@fortawesome/fontawesome-svg-core'
-
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons'
 import {faBluesky, faGithub, faDiscord} from '@fortawesome/free-brands-svg-icons'
 
@@ -50,9 +51,13 @@ const tooltipStyles = reactive({
 function handleHover(social, e) {
   if (social.link === null) {
     tooltipStyles.display = 'initial';
-    tooltipStyles.transform = `translate(${e.x}px, ${e.y}px)`;
+    tooltipStyles.transform = `translate(${e.clientX+10}px, ${e.clientY+10}px)`;
   }
   console.log("yoi");
+}
+
+function handleMouseLeave() {
+  tooltipStyles.display = 'none';
 }
 
 </script>
@@ -67,11 +72,12 @@ function handleHover(social, e) {
         <p>Maksiks☕</p>
       </div>
       <address>
-        <a v-for="social in socials" :href="social.link" @mouseover="handleHover(social, $event)">
+        <a v-for="social in socials" :href="social.link" @mouseover="handleHover(social, $event)" @mouseleave="handleMouseLeave()">
           <font-awesome-icon :icon="social.icon" :style="{scale: social.scaling}"></font-awesome-icon>
         </a>
         <div ref="tooltip" class="tooltip" :style="tooltipStyles">
-          {{ socials.tooltip }}
+          aaa
+<!--          {{ social.tooltip }}-->
         </div>
       </address>
     </div>
@@ -164,6 +170,6 @@ footer {
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 12px;
-  pointer-events: none;
+  pointer-events: none; /* Prevent it from blocking interactions */
 }
 </style>
