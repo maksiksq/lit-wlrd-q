@@ -83,19 +83,21 @@ onMounted(() => {
       </div>
     </div>
     <div class="seg-r half">
-      <Ukraine :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-Ukraine-{{ props.id }}" :style="{filter: isStarted ? 'opacity(1)' : 'opacity(0)', transform: ifDone ? 'translateY(20vw)' : 'translateY(0vw)'}" v-if="props.svg === '0'"/>
-      <cow :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-cow-{{ props.id }}" :style="{filter: isStarted ? 'opacity(1)' : 'opacity(0)', transform: ifDone ? 'translateY(40vw)' : 'translateY(0vw)'}" v-if="props.svg === '1'"/>
-      <dronee :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-dronee-{{ props.id }}" :style="{filter: isStarted ? 'opacity(1)' : 'opacity(0)', transform: ifDone ? 'translateY(40vw)' : 'translateY(0vw)'}" v-if="props.svg === '2'"/>
+      <Ukraine :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-Ukraine-{{ props.id }}" :style="{filter: isStarted ? 'opacity(1)' : 'opacity(0)', }" v-if="props.svg === '0'"/>
+      <cow :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-cow-{{ props.id }}" :style="{filter: isStarted ? 'opacity(1)' : 'opacity(0)'}"  v-if="props.svg === '1'"/>
+      <dronee :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-dronee-{{ props.id }}" :style="{filter: isStarted ? 'opacity(1)' : 'opacity(0)'}" v-if="props.svg === '2'"/>
 
 
     </div>
   </div>
 </template>
-
 <style lang="scss" scoped>
+@use "@/assets/styles/include-media.scss";
+
+$breakpoints: (phone: 320px, phoneSE: 375px, s20ultra: 412px, tablet: 768px, desktop: 1024px);
 
 @mixin motion {
-
+// unused pretty much
 }
 
 
@@ -109,14 +111,26 @@ onMounted(() => {
 }
 
 .even {
+  @include include-media.media(">phone", "<=tablet") {
+    flex-direction: row !important;
+  }
   flex-direction: row-reverse !important; // yes yes very proper i know
   .seg-l {
+    @include include-media.media(">phone", "<=tablet") {
+      padding-left: 7.292vw;
+      padding-right: 0;
+    }
+
     padding-left: 0;
     padding-right: 7.292vw;
   }
 }
 
 .segment {
+  @include include-media.media(">phone", "<=tablet") {
+    flex-wrap: wrap;
+  }
+
   padding-top: 4.125vw;
 
   overflow-y: hidden;
@@ -132,6 +146,10 @@ onMounted(() => {
   }
 
   .seg-l {
+    @include include-media.media(">phone", "<=tablet") {
+      width: 100%;
+    }
+
     width: 40%;
     padding-left: 7.292vw;
     padding-top: 10vw;
@@ -170,6 +188,10 @@ onMounted(() => {
   }
 
   .seg-r {
+    @include include-media.media(">phone", "<=tablet") {
+      width: 100%;
+    }
+
     width: 60%;
 
     display: flex;
