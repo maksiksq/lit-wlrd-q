@@ -1,35 +1,74 @@
 <script setup lang="ts">
-const props = defineProps(['id', 'cls', 'head', 'subhead', 'cnt', 'svg'])
+import {animate} from "motion"
 
 import Ukraine from './svg/Ukraine.vue'
 import cow from './svg/cow.vue'
 import dronee from './svg/dronee.vue'
 
+const props = defineProps(['id', 'cls', 'head', 'subhead', 'cnt', 'svg'])
+
 const evenClass = ref('even')
-const ifEven = parseInt(props.id)%2;
+const ifEven = parseInt(props.id) % 2;
+
+const fadeDefault = ref('fade-default')
 
 onMounted(() => {
   console.log(props.svg)
 })
 
+async function onEnter(el: any, onComplete: any) {
+  console.log(el)
+  console.log("hai")
+  await animate(el, {opacity: 1}, {duration: 1})
+  onComplete()
+}
+
 </script>
 
 <template>
-  <div :id="'seg-'+props.id" :class="[!ifEven ? evenClass : '']"  class="segment">
+  <div :id="'seg-'+props.id" :class="[!ifEven ? evenClass : '']" class="segment">
     <div class="seg-l half">
-      <h2>{{ id }}<span>/</span> {{ head }}</h2>
-      <h4 class="subheader">{{ subhead }}</h4>
-      <p class="content">{{ cnt }}</p>
+      <Transition appear :css="false" @enter="onEnter" @appear="onEnter">
+        <h2>{{ id }}<span>/</span> {{ head }}</h2>
+      </Transition>
+      <Transition appear :css="false" @enter="onEnter" @appear="onEnter">
+        <h4 class="subheader">{{ subhead }}</h4>
+      </Transition>
+      <Transition appear :css="false" @enter="onEnter" @appear="onEnter">
+        <p class="content">{{ cnt }}</p>
+      </Transition>
     </div>
     <div class="seg-r half">
-      <Ukraine v-if="props.svg === '0'" />
-      <cow v-else-if="props.svg === '1'" />
-      <dronee v-else-if="props.svg === '2'" />
+      <Transition appear :css="false" @enter="onEnter" @appear="onEnter">
+        <Ukraine v-if="props.svg === '0'"/>
+      </Transition>
+      <Transition appear :css="false" @enter="onEnter" @appear="onEnter">
+        <cow v-if="props.svg === '1'"/>
+      </Transition>
+      <Transition appear :css="false" @enter="onEnter" @appear="onEnter">
+        <dronee v-if="props.svg === '2'"/>
+      </Transition>
+
+
+
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+
+@mixin motion {
+  opacity: 0;
+}
+
+.fade-default {
+  background-color: purple;
+  * {
+    opacity: 0;
+    background-color: yellow;
+  }
+}
+
 .even {
   flex-direction: row-reverse !important; // yes yes very proper i know
   .seg-l {
@@ -47,7 +86,9 @@ onMounted(() => {
   height: 90vh;
 
   h2 {
-    font-family: 'e-Ukraine head',sans-serif;
+    @include motion;
+
+    font-family: 'e-Ukraine head', sans-serif;
     font-size: 3.75rem;
 
     padding-bottom: 1vw;
@@ -79,6 +120,7 @@ onMounted(() => {
     }
 
   }
+
   .seg-r {
     width: 60%;
 
@@ -94,6 +136,7 @@ onMounted(() => {
     .svg-cow {
       width: 60%;
     }
+
     .svg-dronee {
       width: 30%;
     }
