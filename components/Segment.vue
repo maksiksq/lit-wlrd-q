@@ -39,6 +39,8 @@ onMounted(() => {
 }
 
 .segment {
+  padding-top: 4.125vw;
+
   display: flex;
   flex-direction: row;
 
@@ -90,11 +92,10 @@ onMounted(() => {
     }
 
     .svg-cow {
-      width: 170%;
+      width: 60%;
     }
     .svg-dronee {
       width: 30%;
-
     }
 
   }

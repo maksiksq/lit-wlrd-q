@@ -30,9 +30,8 @@ const data = reactive({
 </script>
 
 <template>
-  <Section v-for="seg in data" :key="seg.id" v-bind="seg"></Section>
+  <Segment v-for="seg in data" :key="seg.id" v-bind="seg"></Segment>
 </template>
 
 <style scoped>
-
 </style>

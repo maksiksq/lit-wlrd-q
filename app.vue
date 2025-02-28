@@ -1,3 +1,9 @@
+<script setup lang="ts">
+// font awesome icons because yes
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+library.add(faUserSecret)
+</script>
 <template>
   <div>
     <NuxtLayout>
@@ -5,7 +11,7 @@
       <main>
         <NuxtPage/>
       </main>
-
+      <footer-q></footer-q>
     </NuxtLayout>
   </div>
 </template>
@@ -36,6 +42,10 @@ body, html, * {
   scroll-behavior: smooth;
 }
 
+a {
+  text-decoration: none;
+}
+
 body, html {
   overflow-x: hidden;
   background-color: #2B2B2B;
@@ -47,5 +57,3 @@ body, html {
 
 </style>
 <style lang="scss" scoped></style>
-<script setup lang="ts">
-</script>

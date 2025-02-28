@@ -1,4 +1,6 @@
 <script>
+// There's a class here
+// BEWARE when replacing
 </script>
 <template>
 <svg class="svg-Ukraine" width="900" height="576" viewBox="0 0 900 576" fill="none" xmlns="http://www.w3.org/2000/svg">
