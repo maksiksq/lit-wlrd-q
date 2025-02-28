@@ -15,11 +15,6 @@ onMounted(() => {
   console.log(props.svg)
 })
 
-async function onEnter(el: any, onComplete: any) {
-  console.log('boink')
-  onComplete()
-}
-
 const animatedElems = new Set();
 const i = ref(0.1);
 const isStarted = ref(false);
