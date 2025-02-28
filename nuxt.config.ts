@@ -4,12 +4,7 @@ export default defineNuxtConfig({
     devtools: {enabled: true},
     app: {
         head: {
-            script: [
-                {
-                    src: "https://cdn.jsdelivr.net/npm/@figmania/loader/build/index.umd.js",
-                    async: true,
-                },
-            ],
+            title: 'Мрії 🎬',
         },
     },
 
