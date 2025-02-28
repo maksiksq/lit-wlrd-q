@@ -32,7 +32,7 @@ function createFlower(x, y) {
 
   flowers.value.push(flowerCircles);
 
-  if (flowers.value.length > 50) {
+  if (flowers.value.length > 30) {
     flowers.value.shift();
   }
 }
