@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="js">
 // There's a class here
 // BEWARE when replacing
 import { ref } from 'vue';

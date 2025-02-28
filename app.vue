@@ -54,6 +54,34 @@ body, html {
   color: white;
 }
 
+// scrollbar
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #bcbcbc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+// and selection
+
+::-moz-selection {
+  background: #f9ff00;
+}
+
+::selection {
+  background: #f9ff00;
+}
+
 
 </style>
 <style lang="scss" scoped></style>
