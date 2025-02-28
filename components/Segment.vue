@@ -11,8 +11,6 @@ const props = defineProps(['id', 'cls', 'head', 'subhead', 'cnt', 'svg'])
 const evenClass = ref('even')
 const ifEven = parseInt(props.id) % 2;
 
-const fadeDefault = ref('fade-default')
-
 onMounted(() => {
   console.log(props.svg)
 })
@@ -24,6 +22,7 @@ async function onEnter(el: any, onComplete: any) {
 
 const animatedElems = new Set();
 const i = ref(0.1);
+const isStarted = ref(false);
 const isDone = ref(false);
 
 function animateOnObserve(entries: IntersectionObserverEntry[]) {
@@ -34,6 +33,10 @@ function animateOnObserve(entries: IntersectionObserverEntry[]) {
     if (!el || animatedElems.has(el.dataset.animId)) {
       return;
     }
+    isStarted.value = true;
+    console.log(isStarted.value)
+    el.style.filter = 'opacity(1)';
+
 
     if (entry.isIntersecting) {
       animatedElems.add(el.dataset.animId);
@@ -85,9 +88,9 @@ onMounted(() => {
       </div>
     </div>
     <div class="seg-r half">
-      <Ukraine :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-Ukraine-{{ props.id }}" :style="{transform: ifDone ? 'translateY(20vw)' : 'translateY(0vw)'}" v-if="props.svg === '0'"/>
-      <cow :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-cow-{{ props.id }}" :style="{transform: ifDone ? 'translateY(40vw)' : 'translateY(0vw)'}" v-if="props.svg === '1'"/>
-      <dronee :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-dronee-{{ props.id }}" :style="{transform: ifDone ? 'translateY(40vw)' : 'translateY(0vw)'}" v-if="props.svg === '2'"/>
+      <Ukraine :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-Ukraine-{{ props.id }}" :style="{filter: isStarted ? 'opacity(1)' : 'opacity(0)', transform: ifDone ? 'translateY(20vw)' : 'translateY(0vw)'}" v-if="props.svg === '0'"/>
+      <cow :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-cow-{{ props.id }}" :style="{filter: isStarted ? 'opacity(1)' : 'opacity(0)', transform: ifDone ? 'translateY(40vw)' : 'translateY(0vw)'}" v-if="props.svg === '1'"/>
+      <dronee :isDone="isDone" v-intersection-observer="animateOnObserve" data-anim-id="sv-dronee-{{ props.id }}" :style="{filter: isStarted ? 'opacity(1)' : 'opacity(0)', transform: ifDone ? 'translateY(40vw)' : 'translateY(0vw)'}" v-if="props.svg === '2'"/>
 
 
     </div>
