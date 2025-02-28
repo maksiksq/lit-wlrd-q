@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   modules: [
-      'floating-vue/nuxt'
+      'floating-vue/nuxt',
+      '@vueuse/nuxt',
   ]
 })
