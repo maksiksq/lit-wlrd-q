@@ -20,6 +20,12 @@ importers:
       '@fortawesome/vue-fontawesome':
         specifier: ^3.0.8
         version: 3.0.8(@fortawesome/fontawesome-svg-core@6.7.2)(vue@3.5.13(typescript@5.7.3))
+      '@vueuse/core':
+        specifier: ^12.7.0
+        version: 12.7.0(typescript@5.7.3)
+      '@vueuse/nuxt':
+        specifier: ^12.7.0
+        version: 12.7.0(magicast@0.3.5)(nuxt@3.15.4(@parcel/watcher@2.5.1)(@types/node@22.13.5)(db0@0.2.4)(ioredis@5.5.0)(magicast@0.3.5)(rollup@4.34.8)(sass@1.85.1)(terser@5.39.0)(typescript@5.7.3)(vite@6.2.0(@types/node@22.13.5)(jiti@2.4.2)(sass@1.85.1)(terser@5.39.0)(yaml@2.7.0))(yaml@2.7.0))(typescript@5.7.3)
       floating-vue:
         specifier: ^5.2.2
         version: 5.2.2(@nuxt/kit@3.15.4(magicast@0.3.5))(vue@3.5.13(typescript@5.7.3))
@@ -927,6 +933,9 @@ packages:
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
 
+  '@types/web-bluetooth@0.0.20':
+    resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
+
   '@unhead/dom@1.11.19':
     resolution: {integrity: sha512-udkgITdIblEWH3hsoFQMKW+6QXNO2qFZlZ2FI37bVAplQSnK/PytTPt/5oA1GWkoVwT0DsQNGHbU6kOg/3SlNg==}
 
@@ -1030,6 +1039,20 @@ packages:
 
   '@vue/shared@3.5.13':
     resolution: {integrity: sha512-/hnE/qP5ZoGpol0a5mDi45bOd7t3tjYJBjsgCsivow7D48cJeV5l05RD82lPqi7gRiphZM37rnhW1l6ZoCNNnQ==}
+
+  '@vueuse/core@12.7.0':
+    resolution: {integrity: sha512-jtK5B7YjZXmkGNHjviyGO4s3ZtEhbzSgrbX+s5o+Lr8i2nYqNyHuPVOeTdM1/hZ5Tkxg/KktAuAVDDiHMraMVA==}
+
+  '@vueuse/metadata@12.7.0':
+    resolution: {integrity: sha512-4VvTH9mrjXqFN5LYa5YfqHVRI6j7R00Vy4995Rw7PQxyCL3z0Lli86iN4UemWqixxEvYfRjG+hF9wL8oLOn+3g==}
+
+  '@vueuse/nuxt@12.7.0':
+    resolution: {integrity: sha512-JG1yjJifcIZkFr+X1VmfNsdNZyHia/wXcpUHqVI2gwax5+bgmUlybqh9nStNGbX9NLUuPvPNNq043es5DlSJKg==}
+    peerDependencies:
+      nuxt: ^3.0.0
+
+  '@vueuse/shared@12.7.0':
+    resolution: {integrity: sha512-coLlUw2HHKsm7rPN6WqHJQr18WymN4wkA/3ThFaJ4v4gWGWAQQGK+MJxLuJTBs4mojQiazlVWAKNJNpUWGRkNw==}
 
   abbrev@3.0.0:
     resolution: {integrity: sha512-+/kfrslGQ7TNV2ecmQwMJj/B65g5KVq1/L3SGVZ3tCYGqlzFuFCGBZJtMP99wH3NpEUyAjn0zPdPUg0D+DwrOA==}
@@ -4135,6 +4158,8 @@ snapshots:
 
   '@types/resolve@1.20.2': {}
 
+  '@types/web-bluetooth@0.0.20': {}
+
   '@unhead/dom@1.11.19':
     dependencies:
       '@unhead/schema': 1.11.19
@@ -4319,6 +4344,36 @@ snapshots:
       vue: 3.5.13(typescript@5.7.3)
 
   '@vue/shared@3.5.13': {}
+
+  '@vueuse/core@12.7.0(typescript@5.7.3)':
+    dependencies:
+      '@types/web-bluetooth': 0.0.20
+      '@vueuse/metadata': 12.7.0
+      '@vueuse/shared': 12.7.0(typescript@5.7.3)
+      vue: 3.5.13(typescript@5.7.3)
+    transitivePeerDependencies:
+      - typescript
+
+  '@vueuse/metadata@12.7.0': {}
+
+  '@vueuse/nuxt@12.7.0(magicast@0.3.5)(nuxt@3.15.4(@parcel/watcher@2.5.1)(@types/node@22.13.5)(db0@0.2.4)(ioredis@5.5.0)(magicast@0.3.5)(rollup@4.34.8)(sass@1.85.1)(terser@5.39.0)(typescript@5.7.3)(vite@6.2.0(@types/node@22.13.5)(jiti@2.4.2)(sass@1.85.1)(terser@5.39.0)(yaml@2.7.0))(yaml@2.7.0))(typescript@5.7.3)':
+    dependencies:
+      '@nuxt/kit': 3.15.4(magicast@0.3.5)
+      '@vueuse/core': 12.7.0(typescript@5.7.3)
+      '@vueuse/metadata': 12.7.0
+      local-pkg: 1.0.0
+      nuxt: 3.15.4(@parcel/watcher@2.5.1)(@types/node@22.13.5)(db0@0.2.4)(ioredis@5.5.0)(magicast@0.3.5)(rollup@4.34.8)(sass@1.85.1)(terser@5.39.0)(typescript@5.7.3)(vite@6.2.0(@types/node@22.13.5)(jiti@2.4.2)(sass@1.85.1)(terser@5.39.0)(yaml@2.7.0))(yaml@2.7.0)
+      vue: 3.5.13(typescript@5.7.3)
+    transitivePeerDependencies:
+      - magicast
+      - supports-color
+      - typescript
+
+  '@vueuse/shared@12.7.0(typescript@5.7.3)':
+    dependencies:
+      vue: 3.5.13(typescript@5.7.3)
+    transitivePeerDependencies:
+      - typescript
 
   abbrev@3.0.0: {}
 

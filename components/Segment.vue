@@ -19,8 +19,14 @@ onMounted(() => {
 async function onEnter(el: any, onComplete: any) {
   console.log(el)
   console.log("hai")
-  await animate(el, {opacity: 1}, {duration: 1})
+  await animate(el,
+      { y: ['10vw', '0%'], opacity: [0, 1]},  { duration: 0.8, easing: "ease-out" })
+
   onComplete()
+}
+
+function animateOnEnter() {
+  console.log("test");
 }
 
 </script>
@@ -35,7 +41,7 @@ async function onEnter(el: any, onComplete: any) {
         <h4 class="subheader">{{ subhead }}</h4>
       </Transition>
       <Transition appear :css="false" @enter="onEnter" @appear="onEnter">
-        <p class="content">{{ cnt }}</p>
+        <p v-intersect="animateOnEnter" class="content">{{ cnt }}</p>
       </Transition>
     </div>
     <div class="seg-r half">
@@ -58,8 +64,9 @@ async function onEnter(el: any, onComplete: any) {
 <style lang="scss" scoped>
 
 @mixin motion {
-  opacity: 0;
+
 }
+
 
 .fade-default {
   background-color: purple;
@@ -85,24 +92,6 @@ async function onEnter(el: any, onComplete: any) {
 
   height: 90vh;
 
-  h2 {
-    @include motion;
-
-    font-family: 'e-Ukraine head', sans-serif;
-    font-size: 3.75rem;
-
-    padding-bottom: 1vw;
-  }
-
-  h4 {
-    padding-bottom: 1vw;
-    font-size: 1.3rem;
-  }
-
-  p {
-    font-size: 1.3rem;
-  }
-
   div {
     display: flex;
   }
@@ -115,7 +104,31 @@ async function onEnter(el: any, onComplete: any) {
     display: flex;
     flex-direction: column;
 
+    h2 {
+      @include motion;
+
+      font-family: 'e-Ukraine head', sans-serif;
+      font-size: 3.75rem;
+
+      padding-bottom: 1vw;
+    }
+
+    h4 {
+      @include motion;
+
+      padding-bottom: 1vw;
+      font-size: 1.3rem;
+    }
+
+    p {
+      @include motion;
+      font-size: 1.3rem;
+    }
+
+
     .subheader {
+      @include motion;
+
       color: #D4D4D4;
     }
 
@@ -129,15 +142,21 @@ async function onEnter(el: any, onComplete: any) {
     justify-content: center;
 
     svg {
+      @include motion;
+
       width: 80%;
       height: 100%;
     }
 
     .svg-cow {
+      @include motion;
+
       width: 60%;
     }
 
     .svg-dronee {
+      @include motion;
+
       width: 30%;
     }
 

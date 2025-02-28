@@ -34,6 +34,7 @@ header {
   border-bottom: 1px solid black;
 
   position: fixed;
+  z-index: 99999;
 
   nav {
     width: 100%;
