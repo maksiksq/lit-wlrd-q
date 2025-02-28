@@ -62,7 +62,7 @@ function handleClick(social: any) {
       <address>
         <!-- would make it a NuxtLink but doesn't matter enough here,
         and I'd have to make the logic more complex -->
-        <a v-for="social in socials" target="_blank" :href="social.link" v-tooltip="social.tooltip" @click="handleClick(social)">
+        <a v-for="social in socials" target="_blank" :href="social.link" v-tooltip="{content: social.tooltip, autoHide: true}" @click="handleClick(social)">
           <font-awesome-icon :icon="social.icon" :style="{scale: social.scaling}"></font-awesome-icon>
         </a>
       </address>
