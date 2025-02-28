@@ -12,14 +12,14 @@ library.add(faBluesky, faGithub, faDiscord, faEnvelope)
 const socials = [
   {
     _name: 'GitHub',
-    tooltip: '',
+    tooltip: 'maksiksq (Натисни щоб перейти)',
     icon: faGithub,
     scaling: undefined,
     link: 'https://github.com/maksiksq'
   },
   {
     _name: 'Bluesky',
-    tooltip: '',
+    tooltip: 'maksiks.bsky.social (Натисни щоб перейти)',
     icon: faBluesky,
     scaling: undefined,
     link: 'https://bsky.app/profile/did:plc:hyordudettlbjkmif7jg2cdu'
@@ -52,7 +52,9 @@ const socials = [
         <p>Maksiks☕</p>
       </div>
       <address>
-        <a v-tooltip="'yes' + 'yes'" v-for="social in socials" :href="social.link">
+        <!-- would make it a NuxtLink but doesn't matter enough here,
+        and I'd have to make the logic more complex -->
+        <a v-for="social in socials" target="_blank" :href="social.link" v-tooltip="social.tooltip">
           <font-awesome-icon :icon="social.icon" :style="{scale: social.scaling}"></font-awesome-icon>
         </a>
       </address>
@@ -128,6 +130,8 @@ footer {
         display: flex;
         justify-content: center;
         align-items: center;
+
+        cursor: pointer;
 
         svg {
           scale: 0.6;
