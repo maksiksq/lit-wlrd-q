@@ -14,7 +14,7 @@ const socials = [
     tooltip: '',
     icon: faGithub,
     scaling: null,
-    link: ''
+    link: 'https://github.com/maksiksq'
   },
   {
     _name: 'Bluesky',
@@ -51,7 +51,7 @@ const socials = [
         <p>Maksiks☕</p>
       </div>
       <address>
-        <a v-for="social in socials" href="#">
+        <a v-for="social in socials" href="{{ social.link }}">
           <font-awesome-icon :icon="social.icon" :style="{scale: social.scaling}"></font-awesome-icon>
         </a>
       </address>
