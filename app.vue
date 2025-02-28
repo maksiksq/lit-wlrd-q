@@ -17,7 +17,7 @@ library.add(faUserSecret)
 </template>
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap');
-@import "./assets/styles/include-media.scss";
+@import url('https://raw.githubusercontent.com/maksiksq/lit-wlrd-q/refs/heads/master/assets/styles/include-media.scss');
 
 @font-face {
   font-family: 'e-Ukraine';
