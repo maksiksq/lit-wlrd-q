@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import Section from "~/components/Segment.vue";
-import { defineStore } from 'pinia';
-
 
 const data = reactive({
   seg1: {
