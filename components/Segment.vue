@@ -205,16 +205,20 @@ $breakpoints: (phone: 320px, phoneSE: 375px, s20ultra: 412px, tablet: 768px, des
       height: 100%;
     }
 
+    video {
+      height: 100%;
+    }
+
     .svg-cow {
       @include motion;
 
       width: 60%;
     }
 
-    .svg-dronee {
+    .vid-dronee {
       @include motion;
 
-      width: 30%;
+      width: 100%;
     }
 
   }
