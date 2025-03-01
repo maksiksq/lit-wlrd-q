@@ -1,8 +1,43 @@
-<script>
+<script setup lang="ts">
 // There's a class here
 // BEWARE when replacing
 
+import { onMounted } from 'vue';
+import {animate} from "motion";
 
+// reactivity is very broken in svg's so i'm just doin it without it
+
+function animateFires(firesArray: array) {
+  if (!firesArray) {return}
+
+  const delay = ref(0);
+  firesArray.forEach((fire, index) => {
+    delay.value = index/2;
+    animate(
+        fire,
+        { scale: [1, 0.9, 1], skewX: ["-2deg", "3deg", "-1deg"] },
+        { duration: 3, delay: delay.value, easing: "ease-in-out", direction: "alternate", repeat: Infinity },
+    );
+
+
+    console.log('haiii')
+  });
+}
+
+function cook() {
+  const fires = document.getElementsByClassName('fire');
+
+  const firesArray = Array.from(fires);
+
+  animateFires(firesArray)
+
+}
+
+onMounted(() => {
+  cook()
+
+
+})
 </script>
 <template>
   <svg class="svg-cow" width="269" height="282" viewBox="0 0 269 282" fill="none" xmlns="http://www.w3.org/2000/svg">
