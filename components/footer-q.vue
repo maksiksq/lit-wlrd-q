@@ -71,10 +71,17 @@ function handleClick(social: any) {
 </template>
 
 <style scoped lang="scss">
+@use "@/assets/styles/include-media.scss";
+
 footer {
+  @include include-media.media(">phone", "<=tablet") {
+    height: 15vh;
+  }
   // calculation to make the footer itself-scrollbar width because flex is funny with it
   width: calc(calc(100vw + 0%) - calc(100vw - 100%));
   height: 8vw;
+
+
   background-color: #282828;
 
   display: flex;
