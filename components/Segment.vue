@@ -36,7 +36,7 @@ function animateOnObserve(entries: IntersectionObserverEntry[]) {
     if (entry.isIntersecting) {
       animatedElems.add(el.dataset.animId);
 
-      const duration = 0.8 + i.value;
+      const duration = 0.2 + i.value;
 
       if (el.dataset.animId && el.dataset.animId[0] + el.dataset.animId[1] === 'sv' ) {
         animate(el, { y: ["10vw", "0%"], opacity: [0, 1] }, { duration: 1.2, easing: "spring", stiffness: 10, damping: 500 }).finished.then(() => {
