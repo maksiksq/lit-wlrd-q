@@ -74,11 +74,11 @@ body, html {
 // and selection
 
 ::-moz-selection {
-  background: #f9ff00;
+  background: #fffb00;
 }
 
 ::selection {
-  background: #f9ff00;
+  background: #fffb00;
 }
 
 
