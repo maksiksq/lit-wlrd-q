@@ -165,6 +165,6 @@ footer {
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 12px;
-  pointer-events: none; /* Prevent it from blocking interactions */
+  pointer-events: none;
 }
 </style>
