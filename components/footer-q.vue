@@ -8,7 +8,7 @@ library.add(faBluesky, faGithub, faDiscord, faEnvelope)
 
 const socials = [
   {
-    _name: 'GitHub',
+    _name: 'Github',
     tooltip: 'maksiksq (Натисни щоб перейти)',
     value: undefined,
     icon: faGithub,
