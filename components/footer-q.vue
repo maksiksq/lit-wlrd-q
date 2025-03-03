@@ -80,7 +80,7 @@ footer {
     height: 100%;
     flex-direction: column;
 
-    margin-top: 15vh;
+    margin-top: 2vh;
   }
 
   // calculation to make the footer itself-scrollbar width because flex is funny with it

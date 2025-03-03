@@ -201,6 +201,9 @@ $breakpoints: (phone: 320px, phoneSE: 375px, s20ultra: 412px, tablet: 768px, des
 
     svg {
       @include motion;
+      @include include-media.media(">phone", "<=tablet") {
+        margin-top: 8vh;
+      }
 
       width: 80%;
       height: 100%;
