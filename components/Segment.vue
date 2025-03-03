@@ -129,6 +129,7 @@ $breakpoints: (phone: 320px, phoneSE: 375px, s20ultra: 412px, tablet: 768px, des
 .segment {
   @include include-media.media(">phone", "<=tablet") {
     flex-wrap: wrap;
+    height: 100%;
   }
 
   padding-top: 4.125vw;
