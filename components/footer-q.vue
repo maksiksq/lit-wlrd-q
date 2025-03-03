@@ -101,6 +101,8 @@ footer {
     @include include-media.media(">phone", "<=tablet") {
       width: 100%;
       border-bottom: 1px solid black;
+
+      padding: 5vw;
     }
 
     display: flex;
@@ -110,8 +112,14 @@ footer {
     justify-content: center;
     border-right: 1px solid black;
 
-    //
     p {
+      @include include-media.media(">phone", "<=tablet") {
+        font-size: 1rem;
+
+        padding-left: 5vw;
+        padding-right: 5vw;
+      }
+
       color: #D4D4D4;
       font-size: 1.2rem;
     }
@@ -128,6 +136,11 @@ footer {
     flex-direction: column;
 
     div {
+      @include include-media.media(">phone", "<=tablet") {
+        padding: 3vw;
+      }
+
+
       width: 100%;
       height: 50%;
 
@@ -137,6 +150,13 @@ footer {
       border-bottom: 1px black solid;
 
       p {
+        @include include-media.media(">phone", "<=tablet") {
+          font-size: 1.8rem;
+
+
+        }
+
+
         font-family: "e-Ukraine head", sans-serif;
         font-size: 2rem;
         padding-left: 1vw;
