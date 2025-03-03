@@ -2,7 +2,7 @@
 // There's a class here
 // BEWARE when replacing
 
-// not to self: don't forget to encode to webm w/ Shutter encoder if i do it again
+// note to self: don't forget to encode to webm w/ Shutter encoder if i do it again
 </script>
 
 <template>
