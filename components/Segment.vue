@@ -177,7 +177,7 @@ $breakpoints: (phone: 320px, phoneSE: 375px, s20ultra: 412px, tablet: 768px, des
     p {
       @include motion;
       @include include-media.media(">phone", "<=tablet") {
-        padding-right: 3vw;
+        padding-right: 7vw;
       }
       font-size: 1.3rem;
     }
