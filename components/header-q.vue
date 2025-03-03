@@ -26,10 +26,16 @@ function scrollToTop() {
 </template>
 
 <style lang="scss" scoped>
+@use "@/assets/styles/include-media.scss";
+
+
 header {
   width: 100vw;
   height: 4.125vw;
 
+  @include include-media.media(">phone", "<=tablet") {
+    height: 15vw;
+  }
   background-color: #282828;
   border-bottom: 1px solid black;
 
