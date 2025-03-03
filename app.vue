@@ -93,5 +93,6 @@ main {
   @include include-media.media(">phone", "<=tablet") {
     padding-top: 7vw;
   }
+  overflow-x: hidden;
 }
 </style>

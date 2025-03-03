@@ -33,6 +33,9 @@ header {
   @include include-media.media(">phone", "<=tablet") {
     height: 15vw;
   }
+  @include include-media.media("=>tablet", "<desktop") {
+    height: 20vw;
+  }
 
   width: 100vw;
   height: 4.125vw;
@@ -93,12 +96,15 @@ header {
       @include include-media.media(">phone", "<=tablet") {
         margin-left: 5.3vw;
         padding-right: 5.3vw;
+
+        width: 10vw;
+
       }
       margin-left: 2.83vw;
       cursor: pointer;
 
       padding-right: 2.083vw;
-      width: 10vw;
+      width: 3vw;
     }
   }
 }
