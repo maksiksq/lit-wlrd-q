@@ -6,13 +6,15 @@ import {faBluesky, faGithub, faDiscord} from '@fortawesome/free-brands-svg-icons
 
 library.add(faBluesky, faGithub, faDiscord, faEnvelope)
 
+const desktopScalingClass = ref('desktop-scaling')
+
 const socials = [
   {
     _name: 'Github',
     tooltip: 'maksiksq (Натисни щоб перейти)',
     value: undefined,
     icon: faGithub,
-    scaling: undefined,
+    desktopScaling: false,
     link: 'https://github.com/maksiksq'
   },
   {
@@ -20,7 +22,7 @@ const socials = [
     tooltip: 'maksiks.bsky.social (Натисни щоб перейти)',
     value: undefined,
     icon: faBluesky,
-    scaling: undefined,
+    desktopScaling: false,
     link: 'https://bsky.app/profile/did:plc:hyordudettlbjkmif7jg2cdu'
   },
   {
@@ -28,7 +30,7 @@ const socials = [
     tooltip: '@maksiks (Натисни щоб скопіювати)',
     value: "@maksiks",
     icon: faDiscord,
-    scaling: 0.8,
+    desktopScaling: true,
     link: undefined
   },
   {
@@ -36,7 +38,7 @@ const socials = [
     tooltip: 'maksiks.touch@gmail.com (Натисни щоб скопіювати)',
     value: "maksiks.touch@gmail.com",
     icon: faEnvelope,
-    scaling: undefined,
+    desktopScaling: false,
     link: undefined
   }
 ]
@@ -63,7 +65,7 @@ function handleClick(social: any) {
         <!-- would make it a NuxtLink but doesn't matter enough here,
         and I'd have to make the logic more complex -->
         <a v-for="social in socials" target="_blank" :href="social.link" v-tooltip="{content: social.tooltip, autoHide: true}" @click="handleClick(social)">
-          <font-awesome-icon :icon="social.icon" :style="{scale: social.scaling}"></font-awesome-icon>
+          <font-awesome-icon :icon="social.icon" :class="social.desktopScaling ? desktopScalingClass : ''"></font-awesome-icon>
         </a>
       </address>
     </div>
@@ -75,8 +77,10 @@ function handleClick(social: any) {
 
 footer {
   @include include-media.media(">phone", "<=tablet") {
-    height: 15vh;
+    height: 100%;
+    flex-direction: column;
   }
+
   // calculation to make the footer itself-scrollbar width because flex is funny with it
   width: calc(calc(100vw + 0%) - calc(100vw - 100%));
   height: 8vw;
@@ -92,6 +96,11 @@ footer {
 
 
   .cont-l {
+    @include include-media.media(">phone", "<=tablet") {
+      width: 100%;
+      border-bottom: 1px solid black;
+    }
+
     display: flex;
     align-items: center;
     width: 70%;
@@ -107,6 +116,10 @@ footer {
   }
 
   .cont-r {
+    @include include-media.media(">phone", "<=tablet") {
+      width: 100%;
+    }
+
     width: 30%;
     height: 100%;
     display: flex;
@@ -129,6 +142,10 @@ footer {
     }
 
     address {
+      @include include-media.media(">phone", "<=tablet") {
+        height: 15vw;
+      }
+
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -148,7 +165,17 @@ footer {
 
         cursor: pointer;
 
+        .desktop-scaling {
+          @include include-media.media(">phone", "<=tablet") {
+            scale: 2.2;
+          }
+        }
+
         svg {
+          @include include-media.media(">phone", "<=tablet") {
+            scale: 2.2;
+          }
+
           scale: 0.6;
           width: 4vw;
           height: 100%;
