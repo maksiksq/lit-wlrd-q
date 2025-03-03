@@ -98,7 +98,6 @@ header {
         padding-right: 5.3vw;
 
         width: 10vw;
-
       }
       margin-left: 2.83vw;
       cursor: pointer;
