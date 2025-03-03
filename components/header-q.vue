@@ -62,6 +62,13 @@ header {
       align-items: center;
 
       a {
+        @include include-media.media(">phone", "<=tablet") {
+          padding-left: 5vw;
+          padding-right: 5vw;
+
+          user-select: none;
+        }
+
         padding-left: 2vw;
         padding-right: 2vw;
         width: 100%;
@@ -83,11 +90,15 @@ header {
     }
 
     .logo {
+      @include include-media.media(">phone", "<=tablet") {
+        margin-left: 5.3vw;
+        padding-right: 5.3vw;
+      }
       margin-left: 2.83vw;
       cursor: pointer;
 
       padding-right: 2.083vw;
-      width: 3vw;
+      width: 10vw;
     }
   }
 }
