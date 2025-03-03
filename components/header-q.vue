@@ -30,12 +30,13 @@ function scrollToTop() {
 
 
 header {
-  width: 100vw;
-  height: 4.125vw;
-
   @include include-media.media(">phone", "<=tablet") {
     height: 15vw;
   }
+
+  width: 100vw;
+  height: 4.125vw;
+
   background-color: #282828;
   border-bottom: 1px solid black;
 

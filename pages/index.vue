@@ -32,5 +32,6 @@ const data = reactive({
   <Segment v-for="seg in data" :key="seg.id" v-bind="seg"></Segment>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+// it's all in app.vue
 </style>

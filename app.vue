@@ -16,7 +16,9 @@ library.add(faUserSecret)
   </div>
 </template>
 <style lang="scss">
+@use "@/assets/styles/include-media.scss";
 @import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap');
+
 
 @font-face {
   font-family: 'e-Ukraine';
@@ -83,4 +85,13 @@ body, html {
 
 
 </style>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use "@/assets/styles/include-media.scss";
+
+
+main {
+  @include include-media.media(">phone", "<=tablet") {
+    padding-top: 7vw;
+  }
+}
+</style>
