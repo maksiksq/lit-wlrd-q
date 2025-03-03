@@ -196,6 +196,7 @@ footer {
         svg {
           @include include-media.media(">phone", "<=tablet") {
             scale: 2.2;
+            height: 30%;
           }
 
           scale: 0.6;
