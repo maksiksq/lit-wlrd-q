@@ -160,6 +160,9 @@ $breakpoints: (phone: 320px, phoneSE: 375px, s20ultra: 412px, tablet: 768px, des
 
     h2 {
       @include motion;
+      @include include-media.media(">phone", "<=tablet") {
+        padding-right: 1vw;
+      }
 
       font-family: 'e-Ukraine head', sans-serif;
       font-size: 3.75rem;
@@ -169,6 +172,9 @@ $breakpoints: (phone: 320px, phoneSE: 375px, s20ultra: 412px, tablet: 768px, des
 
     h4 {
       @include motion;
+      @include include-media.media(">phone", "<=tablet") {
+        padding-right: 1vw;
+      }
 
       padding-bottom: 1vw;
       font-size: 1.3rem;
