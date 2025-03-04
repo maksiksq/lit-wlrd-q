@@ -5,22 +5,21 @@
 import { onMounted } from 'vue';
 import {animate} from "motion";
 
-// reactivity is very broken in svg's so i'm just doin it without it
+// reactivity is very broken in svg's so i'm just doin it without it mostly
 
-function animateFires(firesArray: array) {
+function animateFires(firesArray: Array<any>) {
   if (!firesArray) {return}
 
   const delay = ref(0);
-  firesArray.forEach((fire, index) => {
+  firesArray.forEach((fire: any, index: any) => {
     delay.value = index/2;
+
     animate(
         fire,
-        { scale: [1, 0.9, 1], skewX: ["-2deg", "3deg", "-1deg"] },
+        { scale: [1, 0.9, 1], skewX: ["-2deg", "3deg", "-1deg"]},
+        // @ts-ignore
         { duration: 3, delay: delay.value, easing: "ease-in-out", direction: "alternate", repeat: Infinity },
     );
-
-
-    console.log('haiii')
   });
 }
 
@@ -30,13 +29,10 @@ function cook() {
   const firesArray = Array.from(fires);
 
   animateFires(firesArray)
-
 }
 
 onMounted(() => {
   cook()
-
-
 })
 </script>
 <template>
