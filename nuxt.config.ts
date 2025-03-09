@@ -8,6 +8,9 @@ export default defineNuxtConfig({
         },
     },
 
+    // ssr is on for now, and I might keep it for the web version, when
+    // the time comes I'll prolly just disable it for the Tauri branch
+
     vite: {
         optimizeDeps: {
             exclude: ["idb"]
