@@ -8,6 +8,12 @@ export default defineNuxtConfig({
         },
     },
 
+    vite: {
+        optimizeDeps: {
+            exclude: ["idb"]
+        }
+    },
+
     modules: [
         'floating-vue/nuxt',
         '@vueuse/nuxt',
