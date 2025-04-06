@@ -1,3 +1,6 @@
 # Lit-wrld-q
 
-This is a little project that is a spiritual successor of one of my previous websites, and that one won first place in a web-design competition, and this one is participating in this year's competition too.
+This is a little project that is a spiritual successor of a [previous project of mine](https://maksiksq.github.io/futureOfUkraineWebDesignCompetition2023h1/) (it's kinda old by now), and that one won first place in a web-design competition. So naturally to see my improvement over time, now I particpated in the same exact competition with this project and won first place once again.
+
+Look at it here: https://lit-wlrd-q.vercel.app/
+Fully responsive, Vue, Nuxt, Framer Motion, svg and a bunch of handcoded magic.
