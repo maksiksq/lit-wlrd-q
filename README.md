@@ -4,5 +4,5 @@ This is a little project that is a spiritual successor of a [previous project of
 
 ![image](https://github.com/user-attachments/assets/2161c14d-9f4b-4675-9783-d2114b0c1b0e)
 
-Look at it here: https://lit-wlrd-q.vercel.app/
+Look at it here: https://lit-wlrd-q.vercel.app/ <br>
 Fully responsive, Vue, Nuxt, Framer Motion, svg and a bunch of handcoded magic.
